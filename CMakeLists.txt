@@ -54,6 +54,10 @@ SET(Minecraft_Additional_Include_Dirs
 
     "${PROJECT_SOURCE_DIR}/"
 	"${PROJECT_SOURCE_DIR}/dependencies/Vulkan-Headers/include"
+	"${PROJECT_SOURCE_DIR}/dependencies/zlib"
+	"${PROJECT_SOURCE_DIR}/dependencies/libpng"
+	"${PROJECT_SOURCE_DIR}/dependencies/plog/include"
+	"${PROJECT_SOURCE_DIR}/dependencies/mathfu/include"
 )
 
 TARGET_INCLUDE_DIRECTORIES(MinecraftClient PUBLIC "${Minecraft_Additional_Include_Dirs}")
