@@ -1,5 +1,6 @@
 #pragma once
 
+#include <common\Image.hpp>
 #include <common\Header.hpp>
 
 namespace mc {
@@ -9,7 +10,15 @@ namespace mc {
 		GLFWwindow* m_handle = nullptr;
 
 	public:
-        Window(const char* const title, const mc::u32 width, const mc::u32 height) noexcept;
+        Window() noexcept = default;
+
+        FORCE_INLINE Window(Window&& win) noexcept
+            : m_handle(win.m_handle)
+        {
+            win.m_handle = nullptr;
+        }
+
+        Window(const char* const title, const mc::u32 width, const mc::u32 height, mc::Image2Du8& icon) noexcept;
 
         FORCE_INLINE bool Exists() const noexcept { return this->m_handle != nullptr; }
 

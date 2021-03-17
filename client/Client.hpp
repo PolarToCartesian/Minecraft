@@ -8,13 +8,15 @@ namespace mc {
 
     class Client {
     private:
-        Window m_window;
+        std::unique_ptr<Window> m_pWindow;
 
     public:
         Client() noexcept;
 
         void Run() noexcept;
     }; // class Client
+
+    void GLFWErrorCallback(int, const char*);
 
     void InitializeDependencies();
 
