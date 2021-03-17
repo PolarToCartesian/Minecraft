@@ -3,12 +3,14 @@
 #include <common/Header.hpp>
 
 #include <client/Window.hpp>
+#include <client/Renderer.hpp>
 
 namespace mc {
 
     class Client {
     private:
-        std::unique_ptr<Window> m_pWindow;
+        std::unique_ptr<mc::Window>   m_pWindow;
+        std::unique_ptr<mc::Renderer> m_pRenderer;
 
     public:
         Client() noexcept;

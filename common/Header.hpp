@@ -45,15 +45,28 @@
 #include <mathfu/matrix.h>
 #include <mathfu/quaternion.h>
 
+#define MINECRAFT_VERSION VK_MAKE_VERSION(0, 0, 0)
+
 #define REPORT_ERROR   PLOG_ERROR
 #define REPORT_WARNING PLOG_WARNING
 #define REPORT_RELEASE PLOG_INFO
 #define REPORT_DEBUG   PLOG_DEBUG
 
-#define ASSERT(predicate, msg) \
-    if (!(predicate)) {        \
-        REPORT_ERROR << msg;   \
-        std::exit(-1);         \
+#ifdef _WIN32
+#	define DISPLAY_BOX_ERROR(msg) MessageBoxA(NULL, msg, "Minecraft Error: ", MB_ICONERROR);
+#else
+#	define DISPLAY_BOX_ERROR(msg)
+#endif
+
+#define ABORT(msg)            \
+	std::cerr << msg << '\n'; \
+	REPORT_ERROR << msg;      \
+	DISPLAY_BOX_ERROR(msg);   \
+	std::exit(-1);            \
+
+#define ASSERT(predicate, msg)  \
+    if (!(predicate)) {         \
+		ABORT(msg);             \
     }
 
 #ifdef _DEBUG

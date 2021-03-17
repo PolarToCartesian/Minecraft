@@ -9,6 +9,8 @@ namespace mc {
 
         this->m_pWindow = std::make_unique<mc::Window>("Minecraft Client", 1920, 1080, icon);
         ASSERT(this->m_pWindow->Exists(), "Window Creation Failed");
+
+        this->m_pRenderer = std::make_unique<mc::Renderer>(*this->m_pWindow);
     }
 
     void Client::Run() noexcept {
